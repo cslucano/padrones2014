@@ -12,7 +12,7 @@ areas =  [
          ]
 files.each do |file_name|
     print file_name
-    extractor = Tabula::Extraction::ObjectExtractor.new(file_name, [1])
+    extractor = Tabula::Extraction::ObjectExtractor.new(file_name, :all)
     extractor.extract.each do |pdf_page|
       page_areas = areas.map{ |area| pdf_page.get_area(area) }
       tables = page_areas.map{ |page_area| page_area.make_table({}) }
