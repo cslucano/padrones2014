@@ -1,6 +1,6 @@
 require 'tabula'
 
-files = Dir.glob "./input/*.pdf"
+files = Dir.glob "./padrones/*.pdf"
 
 outfilename = "./output/padron_electoral.csv"
 out = open(outfilename, 'w')
@@ -11,7 +11,7 @@ areas =  [
              [130, 390, 800, 570]
          ]
 files.each do |file_name|
-    print file_name
+    print file_name + "\n"
     extractor = Tabula::Extraction::ObjectExtractor.new(file_name, :all)
     extractor.extract.each do |pdf_page|
       page_areas = areas.map{ |area| pdf_page.get_area(area) }
